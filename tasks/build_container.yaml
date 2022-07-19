@@ -13,4 +13,5 @@ spec:
   steps:
     - image: quay.io/redhat-appstudio/hacbs-test:stable
       script: |
-        echo "sha256:e7d88de73db3d3fd9b2d63aa7f447a10fd0220b7cbf39803c803f2af9ba256b3" | tee $(results.IMAGE_DIGEST.path)
+        sha256=$(echo -n $RANDOM | sha256sum | head -c 64)
+        echo "sha256:${sha256}" | tee $(results.IMAGE_DIGEST.path)
