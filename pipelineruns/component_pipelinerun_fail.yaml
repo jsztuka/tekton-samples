@@ -6,12 +6,13 @@ metadata:
   annotations:
     "appstudio.redhat.com/updateComponentOnSuccess": "false"
   labels:
-    pipelines.appstudio.openshift.io/type: "integration-test"
+    pipelines.appstudio.openshift.io/type: "test"
     test.appstudio.openshift.io/test: "component"
     test.appstudio.openshift.io/snapshot: "snapshot-sample"
     test.appstudio.openshift.io/component: "component-sample"
     test.appstudio.openshift.io/application: "application-sample"
+    test.appstudio.openshift.io/scenario: "integrationtestscenario-sample1"
 spec:
   pipelineRef:
-    name: component-pipeline
-    bundle: quay.io/kpavic/test-bundle:component-pipeline
+    name: component-pipeline-fail
+    bundle: quay.io/kpavic/test-bundle:component-pipeline-fail

@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: component-pipeline
+  name: component-pipeline-pass
 spec:
   tasks:
     - name: task-success
@@ -11,13 +11,13 @@ spec:
       params:
         - name: RESULT
           value: SUCCESS
-    - name: task-failure
+    - name: task-success-2
       taskRef:
         name: test-output
         bundle: quay.io/kpavic/test-bundle:test-output
       params:
         - name: RESULT
-          value: FAILURE
+          value: SUCCESS
     - name: task-skipped
       taskRef:
         name: test-output

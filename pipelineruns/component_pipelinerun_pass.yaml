@@ -1,0 +1,18 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: component-pipelinerun-
+  annotations:
+    "appstudio.redhat.com/updateComponentOnSuccess": "false"
+  labels:
+    pipelines.appstudio.openshift.io/type: "test"
+    test.appstudio.openshift.io/test: "component"
+    test.appstudio.openshift.io/snapshot: "snapshot-sample"
+    test.appstudio.openshift.io/component: "component-sample"
+    test.appstudio.openshift.io/application: "application-sample"
+    test.appstudio.openshift.io/scenario: "integrationtestscenario-sample1"
+spec:
+  pipelineRef:
+    name: component-pipeline-pass
+    bundle: quay.io/kpavic/test-bundle:component-pipeline-pass
