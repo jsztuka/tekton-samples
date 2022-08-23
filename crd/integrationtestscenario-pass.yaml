@@ -1,0 +1,9 @@
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: IntegrationTestScenario
+metadata:
+  name: example-pass
+  namespace: default
+spec:
+  application: application-sample
+  bundle: 'quay.io/kpavic/test-bundle:component-pipeline-pass'
+  pipeline: component-pipeline-pass
