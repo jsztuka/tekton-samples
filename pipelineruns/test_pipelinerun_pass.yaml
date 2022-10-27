@@ -1,0 +1,25 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: test-pipelinerun-
+  annotations:
+    "appstudio.redhat.com/updateComponentOnSuccess": "false"
+  labels:
+    pipelines.appstudio.openshift.io/type: "test"
+    test.appstudio.openshift.io/test: "component"
+    test.appstudio.openshift.io/snapshot: "snapshot-sample"
+    test.appstudio.openshift.io/component: "component-sample"
+    test.appstudio.openshift.io/application: "application-sample"
+    test.appstudio.openshift.io/scenario: "integration-scenario"
+spec:
+  pipelineRef:
+    name: component-pipeline-pass-kubeconf
+    bundle: quay.io/jsztuka/component-kube-conf:test
+  params:
+    - name: output-image
+      value: "quay.io/redhat-appstudio/sample-image"
+  workspaces:
+    - name: kubeconf-auth
+      secret:
+        secretName: my-second-managed-environment-secret
